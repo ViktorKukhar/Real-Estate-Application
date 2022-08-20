@@ -27,6 +27,14 @@
   </div>
 
   <div class="form-group">
-    <%= form.submit "Submit", class: "btn btn-success"%>
+    <%= form.label :image %>
+    <%= form.file_field :image, class: "form-control" %>
+
+
+
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Save Property", class: "btn btn-primary"%>
   </div>
 <% end %>

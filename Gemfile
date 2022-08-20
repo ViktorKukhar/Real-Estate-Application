@@ -9,8 +9,23 @@ gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 gem "devise"
 
 gem 'sass', '~> 3.4', '>= 3.4.22'
-
 gem 'sass-rails'
+
+
+# IMAGE GEM
+gem 'carrierwave', '~> 2.0'
+
+gem 'fog-aws'
+
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
+
+gem "aws-sdk-s3", require: false
+
+
+ # gem 'rmagick', '~> 2.15', '>= 2.15.4'
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -62,4 +77,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "figaro"
 end

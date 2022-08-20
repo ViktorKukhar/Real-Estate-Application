@@ -24,4 +24,12 @@
     <%= property.bathrooms %>
   </p>
 
+
+    <strong>Image:</strong>
+    <br>
+    <% if @property.image.present? %>
+    <%= image_tag @property.image.thumb.url %>
+    <% end %>
+
+
 </div>
