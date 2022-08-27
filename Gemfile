@@ -10,9 +10,9 @@ gem "devise"
 
 gem 'sass', '~> 3.4', '>= 3.4.22'
 gem 'sass-rails'
-gem 'webpack-rails', '~> 0.9.11'
+# gem 'webpack-rails', '~> 0.9.11'
 gem 'foreman', '~> 0.87.2'
-gem 'webpacker'
+# gem 'webpacker'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 5.2'
