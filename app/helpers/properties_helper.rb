@@ -1,6 +1,8 @@
 module PropertiesHelper
-   def property_thumbnail
-     img = property.image.pressent ? property.image.url : "placeholder.jpg"
-     image_tag img
-   end
+  def bg_img
+    "background:transparent url('/images/aparts.jpg') no-repeat fixed left top;"
+  end
+
+
+
 end

@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_account!, only: [:new,:create,:destroy]
+  before_action :set_sidebar, except: [:show, :apartments, :houses]
   # GET /properties or /properties.json
   def index
     @properties = Property.all
@@ -9,6 +10,8 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @seller = @property.account
+    @seller_properties = Property.where(account_id: @seller.id).where.not(id: @property.id)
   end
 
   # GET /properties/new
@@ -19,6 +22,14 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
+  end
+
+  def apartments
+    @properties = Property.where(kind: 'Apartment')
+  end
+
+  def houses
+    @properties = Property.where(kind: 'House')
   end
 
   # POST /properties or /properties.json
@@ -66,8 +77,14 @@ class PropertiesController < ApplicationController
       @property = Property.find(params[:id])
     end
 
+    def set_sidebar
+
+      @show_sidebar = true
+
+    end
+
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:name, :address, :price, :rooms, :bathrooms, :image)
+      params.require(:property).permit(:name, :address, :price, :area, :rooms, :bathrooms, :description, :image, :kind)
     end
 end

@@ -1,35 +1,107 @@
-<div id="<%= dom_id property %>">
-  <p>
-    <strong>Name:</strong>
-    <%= property.name %>
-  </p>
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+     <div class="carousel-image-place ">
 
-  <p>
-    <strong>Address:</strong>
-    <%= property.address %>
-  </p>
+       <% if property.image.present? %>
+        <%= image_tag property.image.url, class: "image-carousel" %>
+       <% else %>
+        <%= image_tag "placeholder.jpg" %>
+       <% end %>
+     </div>
 
-  <p>
-    <strong>Price:</strong>
-    <%= property.price %>
-  </p>
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1><%= property.name %></h1>
+          <p class="fs-4 fst-italic"><%= property.address %></p>
+          <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-image-place">
 
-  <p>
-    <strong>Rooms:</strong>
-    <%= property.rooms %>
-  </p>
-
-  <p>
-    <strong>Bathrooms:</strong>
-    <%= property.bathrooms %>
-  </p>
-
-
-    <strong>Image:</strong>
-    <br>
-    <% if @property.image.present? %>
-    <%= image_tag @property.image.thumb.url %>
-    <% end %>
-
-
+        <% if property.image.present? %>
+         <%= image_tag property.image.url, class: "image-carousel" %>
+        <% else %>
+         <%= image_tag "placeholder.jpg" %>
+        <% end %>
+       </div>
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1><%= property.name %></h1>
+          <p class="fs-4 fst-italic">Start from: <%= number_to_currency(property.price, precision: 0) %></p>
+          <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="carousel-image-place">
+         <% if property.image.present? %>
+          <%= image_tag property.image.url, class: "image-carousel" %>
+         <% else %>
+          <%= image_tag "placeholder.jpg" %>
+         <% end %>
+        </div>
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1><%= property.name %></h1>
+          <p class="fs-4 fst-italic"><%= property.address %></p>
+          <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
+ <div class="container px-5 mt-4">
+   <div class="row">
+     <div class="col">
+       <div class="row border-bottom">
+         <div class="col-sm-7">
+           <span class="fs-4"><%= property.address %></span>
+           <h4 class="fst-italic pt-2 pb-4">Start from: <span class="fs-3"><%= number_to_currency(property.price, precision: 0) %></span</h4>
+         </div>
+         <div class="col-sm-4 text-center">
+        <div class="row p-4">
+          <div class="col-4">
+            <svg width="30" height="30" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4.00002 19.00001v2M20.00002 19.00001v2M8 11h8a5 5 0 0 1 5 5v3H3v-3a5 5 0 0 1 5-5z"></path><path d="M6.5 11V9A1.5 1.5 0 0 1 8 7.5h2A1.5 1.5 0 0 1 11.5 9v1M12.5 10V9A1.5 1.5 0 0 1 14 7.5h2A1.5 1.5 0 0 1 17.5 9v2" fill="none" stroke="currentColor"></path><path d="M20 13V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" fill="none" stroke="currentColor" stroke-width="2"></path><path fill="none" stroke="currentColor" d="M3.5 15.5h17"></path></svg>
+            <p class="fw-bold"><%= property.rooms %></p>
+            </div>
+            <div class="col-4">
+              <svg width="30" height="30" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 19v2M18 19v2"></path><g fill="currentColor"><circle cx="15.5" cy="8.5" r=".5"></circle><circle cx="13.5" cy="8.5" r=".5"></circle><circle cx="11.5" cy="8.5" r=".5"></circle><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="13.5" cy="10.5" r=".5"></circle><circle cx="11.5" cy="10.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="15.5" cy="10.5" r=".5"></circle></g><g fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM4 12V7a3 3 0 0 1 3-3h1"></path><path d="M8 6.3V4a1 1 0 0 1 1-1h2.3a.7.7 0 0 1 .5 1.2L9.2 6.8A.7.7 0 0 1 8 6.3zM3 13h18"></path></g></svg>
+              <p class="fw-bold"><%= property.bathrooms %></p>
+            </div>
+            <div class="col-4">
+              <svg width="30" height="30" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M3.5 4v13"></path><path fill="currentColor" d="M2.3 4h2.4c.2 0 .4-.2.2-.4L3.7 2.1a.3.3 0 0 0-.5 0L2.1 3.6c-.2.2 0 .4.2.4zm2.4 13H2.3c-.2 0-.4.2-.2.4l1.2 1.5a.3.3 0 0 0 .5 0L5 17.4c.1-.2-.1-.4-.3-.4z"></path><path fill="none" stroke="currentColor" d="M20 21.5H8"></path><path fill="currentColor" d="M20 20.3v2.4c0 .2.2.4.4.2l1.5-1.2a.3.3 0 0 0 0-.5L20.4 20c-.2-.1-.4.1-.4.3zM8 22.7v-2.4c0-.2-.2-.4-.4-.2l-1.5 1.2a.3.3 0 0 0 0 .5L7.6 23c.2.1.4-.1.4-.3z"></path><path fill="none" stroke="currentColor" stroke-width="2" d="M7 5h14v13H7z"></path></svg>
+              <p class="fw-bold"><%= property.area %>m<sup>2</sup></p>
+            </div>
+        </div>
+        </div>
+      </div>
+      <div class="pt-4 prop-desc mb-5">
+
+        <h3>Description</h3>
+        <%= property.description%>
+
+      </div>
+      <!-- <button class="btn btn-outline-primary">More</button> -->
+     </div>
+     <div class="col-4">
+        <%= render "properties/seller_details" %>
+
+     </div>
+   </div>
+ </div>

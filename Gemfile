@@ -10,7 +10,12 @@ gem "devise"
 
 gem 'sass', '~> 3.4', '>= 3.4.22'
 gem 'sass-rails'
-
+gem 'webpack-rails', '~> 0.9.11'
+gem 'foreman', '~> 0.87.2'
+gem 'webpacker'
+gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 5.2'
 
 # IMAGE GEM
 gem 'carrierwave', '~> 2.0'
@@ -61,7 +66,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

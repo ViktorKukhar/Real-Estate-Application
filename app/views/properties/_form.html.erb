@@ -2,6 +2,11 @@
 <%= render "layouts/validation", item: @property %>
 
   <div class="form-group">
+    <%= form.label :type, style: "display: block" %>
+    <%= form.select :kind, ["Apartment", "House"], {}, {class: "form-select"} %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name, class: "form-control"%>
   </div>
@@ -17,6 +22,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :area, style: "display: block" %>
+    <%= form.number_field :area, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :rooms, style: "display: block" %>
     <%= form.number_field :rooms, class: "form-control" %>
   </div>
@@ -24,6 +34,11 @@
   <div class="form-group">
     <%= form.label :bathrooms, style: "display: block" %>
     <%= form.number_field :bathrooms, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description, rows: 4, cols: 60, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -35,6 +50,6 @@
   </div>
 
   <div class="form-group">
-    <%= form.submit "Save Property", class: "btn btn-primary"%>
+    <%= form.submit "Save Property", class: "btn btn-primary mt-3"%>
   </div>
 <% end %>

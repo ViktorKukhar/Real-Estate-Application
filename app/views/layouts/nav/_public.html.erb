@@ -1,18 +1,24 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+
+        <li class="nav-item"><a href="/" class="nav-link <%= 'active' if current_page?(root_path) %>" aria-current="page">Home</a></li>
+
         <% if account_signed_in? %>
+
         <li class="nav-item">
-          <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+          <%= link_to properties_path, class: "text-decoration-none text-body" do %>
+          <span class="nav-link <%= 'active' if current_page?(properties_path) %>">My Properties</span>
+          <% end %>
         </li>
+
         <% end %>
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         <% if account_signed_in? %>
         <li class="nav-item">
-          <%= button_to "Log out", destroy_account_session_path, method: :delete, class: "btn btn-outline-primary me-2" %>
+          <%= button_to "Log out", destroy_account_session_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-outline-primary me-2" %>
         </li>
         <% else %>
         <li class="nav-item">

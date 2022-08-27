@@ -1,8 +1,9 @@
-<section class="form-auth text-center">
+<section class="form-auth text-center pt-5">
 
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
+
+<h1 class="h3 mb-3 fw-normal pt-5">Please Sign Up</h1>
   <%= render "devise/shared/error_messages", resource: resource %>
 
     <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
@@ -19,7 +20,6 @@
   <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
 
 <% end %>
-
 
 <%= render "devise/shared/links" %>
 </section>

@@ -1,34 +1,52 @@
 <% @properties.each do |property| %>
 
 <div class="col">
+
+  <%= link_to property_path(property), class: "text-decoration-none text-body" do %>
   <div class="card shadow-sm">
 
-    <div class="bd-placeholder-img card-img-top" width="100%" height="225" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+
       <% if property.image.present? %>
-      <%= image_tag property.image.thumb.url, class:"bd-placeholder-img card-img-top"%>
+      <%= image_tag property.image.url, class:"card-img-top"%>
       <% else %>
       <%= image_tag "placeholder.jpg" %>
       <% end %>
-    </div>
 
-    <div class="card-body">
-      <h5 class="card-text"><%= property.name %></h5>
-      <h6 class="card-text"><%= property.address %></h6>
-      <h6 class="card-text">Price: <%= property.price %></h6>
 
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+    <div class="card-body ">
+      <h5 class="card-text"><%= property.address %></h5>
+      <h6 class="card-text">Start from: <span class="fs-5"><%= number_to_currency(property.price, precision: 0)%></span></h6>
+      <div class="row d-flex flex-row">
+        <div class="col-1">
+          <svg width="25" height="25" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4.00002 19.00001v2M20.00002 19.00001v2M8 11h8a5 5 0 0 1 5 5v3H3v-3a5 5 0 0 1 5-5z"></path><path d="M6.5 11V9A1.5 1.5 0 0 1 8 7.5h2A1.5 1.5 0 0 1 11.5 9v1M12.5 10V9A1.5 1.5 0 0 1 14 7.5h2A1.5 1.5 0 0 1 17.5 9v2" fill="none" stroke="currentColor"></path><path d="M20 13V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" fill="none" stroke="currentColor" stroke-width="2"></path><path fill="none" stroke="currentColor" d="M3.5 15.5h17"></path></svg>
         </div>
-        <small class="text-muted"><%= property.created_at %></small>
+        <div class="col-1">
+          <span class="fw-bold"><%= property.rooms %></span>
+        </div>
+          <div class="col-1">
+            <svg width="25" height="25" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 19v2M18 19v2"></path><g fill="currentColor"><circle cx="15.5" cy="8.5" r=".5"></circle><circle cx="13.5" cy="8.5" r=".5"></circle><circle cx="11.5" cy="8.5" r=".5"></circle><circle cx="13.5" cy="6.5" r=".5"></circle><circle cx="13.5" cy="10.5" r=".5"></circle><circle cx="11.5" cy="10.5" r=".5"></circle><circle cx="17.5" cy="10.5" r=".5"></circle><circle cx="15.5" cy="10.5" r=".5"></circle></g><g fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-2zM4 12V7a3 3 0 0 1 3-3h1"></path><path d="M8 6.3V4a1 1 0 0 1 1-1h2.3a.7.7 0 0 1 .5 1.2L9.2 6.8A.7.7 0 0 1 8 6.3zM3 13h18"></path></g></svg>
+          </div>
+          <div class="col-1">
+            <span class="fw-bold"><%= property.bathrooms %></span>
+          </div>
+          <div class="col-1">
+            <svg width="25" height="25" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" d="M3.5 4v13"></path><path fill="currentColor" d="M2.3 4h2.4c.2 0 .4-.2.2-.4L3.7 2.1a.3.3 0 0 0-.5 0L2.1 3.6c-.2.2 0 .4.2.4zm2.4 13H2.3c-.2 0-.4.2-.2.4l1.2 1.5a.3.3 0 0 0 .5 0L5 17.4c.1-.2-.1-.4-.3-.4z"></path><path fill="none" stroke="currentColor" d="M20 21.5H8"></path><path fill="currentColor" d="M20 20.3v2.4c0 .2.2.4.4.2l1.5-1.2a.3.3 0 0 0 0-.5L20.4 20c-.2-.1-.4.1-.4.3zM8 22.7v-2.4c0-.2-.2-.4-.4-.2l-1.5 1.2a.3.3 0 0 0 0 .5L7.6 23c.2.1.4-.1.4-.3z"></path><path fill="none" stroke="currentColor" stroke-width="2" d="M7 5h14v13H7z"></path></svg>
+          </div>
+          <div class="col-3">
+            <span class="fw-bold"><%= property.area %>m<sup>2</sup></span>
+          </div>
+      </div>
+      <div class="d-flex justify-content-end"">
+
+        <small class="text-muted"><%= property.created_at.strftime('%F') %></small>
       </div>
     </div>
   </div>
+  <% end %>
+
+
+
 </div>
-
-
-
 
 
 
