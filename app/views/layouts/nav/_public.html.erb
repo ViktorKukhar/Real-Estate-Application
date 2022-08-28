@@ -18,7 +18,7 @@
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         <% if account_signed_in? %>
         <li class="nav-item">
-          <%= button_to "Log out", destroy_account_session_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-outline-primary me-2" %>
+          <%= button_to "Log out", destroy_account_session_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-outline-danger me-2" %>
         </li>
         <% else %>
         <li class="nav-item">

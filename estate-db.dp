@@ -1,0 +1,608 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.4
+-- Dumped by pg_dump version 14.4
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: accounts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.accounts (
+    id bigint NOT NULL,
+    first_name character varying DEFAULT ''::character varying NOT NULL,
+    last_name character varying DEFAULT ''::character varying NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    url character varying,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp(6) without time zone,
+    last_sign_in_at timestamp(6) without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    confirmation_token character varying,
+    confirmed_at timestamp(6) without time zone,
+    confirmation_sent_at timestamp(6) without time zone,
+    unconfirmed_email character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    image character varying
+);
+
+
+ALTER TABLE public.accounts OWNER TO postgres;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.accounts_id_seq OWNER TO postgres;
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
+
+
+--
+-- Name: action_text_rich_texts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.action_text_rich_texts (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    body text,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.action_text_rich_texts OWNER TO postgres;
+
+--
+-- Name: action_text_rich_texts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.action_text_rich_texts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.action_text_rich_texts_id_seq OWNER TO postgres;
+
+--
+-- Name: action_text_rich_texts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.action_text_rich_texts_id_seq OWNED BY public.action_text_rich_texts.id;
+
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO postgres;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO postgres;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    service_name character varying NOT NULL,
+    byte_size bigint NOT NULL,
+    checksum character varying,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO postgres;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO postgres;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: active_storage_variant_records; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.active_storage_variant_records (
+    id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    variation_digest character varying NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_variant_records OWNER TO postgres;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.active_storage_variant_records_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_variant_records_id_seq OWNER TO postgres;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.active_storage_variant_records_id_seq OWNED BY public.active_storage_variant_records.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO postgres;
+
+--
+-- Name: properties; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.properties (
+    id bigint NOT NULL,
+    account_id bigint,
+    name character varying,
+    address character varying,
+    price integer,
+    area integer,
+    rooms integer,
+    bathrooms integer,
+    description character varying,
+    image character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    kind character varying
+);
+
+
+ALTER TABLE public.properties OWNER TO postgres;
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.properties_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.properties_id_seq OWNER TO postgres;
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.properties_id_seq OWNED BY public.properties.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO postgres;
+
+--
+-- Name: accounts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
+
+
+--
+-- Name: action_text_rich_texts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.action_text_rich_texts ALTER COLUMN id SET DEFAULT nextval('public.action_text_rich_texts_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_variant_records id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAULT nextval('public.active_storage_variant_records_id_seq'::regclass);
+
+
+--
+-- Name: properties id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.properties ALTER COLUMN id SET DEFAULT nextval('public.properties_id_seq'::regclass);
+
+
+--
+-- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.accounts (id, first_name, last_name, email, encrypted_password, url, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, confirmation_token, confirmed_at, confirmation_sent_at, unconfirmed_email, created_at, updated_at, image) FROM stdin;
+1	Vito	Corleone	vitocorleone@gmail.com	$2a$12$gtcYMpnsQr6Sij2zMu/DUOV/QZjmhSq4wXO6Ctp4Ed9oZ8pkQCTHy	\N	\N	\N	\N	1	2022-08-27 19:33:50.117648	2022-08-27 19:33:50.117648	::1	::1	\N	\N	\N	\N	2022-08-27 19:33:50.102728	2022-08-27 19:33:50.117828	\N
+2	Michael	Corleone	michaelcorleone@gmail.com	$2a$12$laKAO1nZi6o6jFSrXZDQsu33UF8ojzg59AN5isDl1rqkUmmfs3FJO	\N	\N	\N	\N	1	2022-08-27 19:45:29.75513	2022-08-27 19:45:29.75513	::1	::1	\N	\N	\N	\N	2022-08-27 19:45:29.75175	2022-08-27 19:45:29.75524	\N
+\.
+
+
+--
+-- Data for Name: action_text_rich_texts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.action_text_rich_texts (id, name, body, record_type, record_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, service_name, byte_size, checksum, created_at) FROM stdin;
+\.
+
+
+--
+-- Data for Name: active_storage_variant_records; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.active_storage_variant_records (id, blob_id, variation_digest) FROM stdin;
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2022-08-27 19:31:56.509293	2022-08-27 19:31:56.509293
+\.
+
+
+--
+-- Data for Name: properties; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.properties (id, account_id, name, address, price, area, rooms, bathrooms, description, image, created_at, updated_at, kind) FROM stdin;
+1	1	Pretty One	LA, Sichova St. 123	1000000	85	4	1	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	MON-16JH-28.jpg	2022-08-27 19:35:23.537266	2022-08-27 19:35:23.537266	Apartment
+2	1	With Perfect View	LA, Under The Oak St. 1774	1400000	67	2	1	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	luxury-apartments-downtown-LA-living.jpg	2022-08-27 19:37:30.875584	2022-08-27 19:37:30.875584	Apartment
+3	1	Cool Apartment in NY	NY, Naykova St. 32	900000	75	3	1	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	maxresdefault.jpg	2022-08-27 19:39:14.69082	2022-08-27 19:39:14.69082	Apartment
+4	1	Big House in Nevada	NV, Trakt Hlynansky St. 226	500000	300	7	2	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	Black-house-in-the-woods-Kireeva-Anna-USA-002.jpg	2022-08-27 19:41:29.04128	2022-08-27 19:41:29.04128	House
+5	1	Very Modern Cool House	LA, Compton St. 123	1400000	500	9	3	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	modern-house-2-1538579843.jpg	2022-08-27 19:42:32.272921	2022-08-27 19:42:32.272921	House
+6	1	Old Pretty House	LA, Daewoo St. 12	750000	300	5	2	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	USA-Georgia-Warm_Springs-Roosevelt_s_Little_White_House.jpg	2022-08-27 19:44:35.888593	2022-08-27 19:44:35.888593	House
+7	2	Old Vintage Apartment in New-York City	NY, Topolna St. 23	1300000	100	4	2	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	paris-apartments-for-rent-Rue-de-Varenne-III-3-1.jpg	2022-08-27 19:46:34.959176	2022-08-27 19:46:34.959176	Apartment
+8	2	Very Cool	NY, Cool Place St. 24	700000	75	3	1	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	Dining_3-1024x674.jpg	2022-08-27 19:47:40.347327	2022-08-27 19:47:40.347327	Apartment
+9	2	Cool Apart	LA, Mirage St. 12	650000	65	2	1	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	02nyluxury2-videoSixteenByNineJumbo1600.jpg	2022-08-27 19:48:31.771934	2022-08-27 19:48:31.771934	Apartment
+10	2	Modern House LA	LA, Dust Two St. 1234	2000000	576	9	4	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	BHV048_Knock-Down-and-Rebuild_American-Homes_9387.jpg	2022-08-27 19:49:40.707661	2022-08-27 19:49:40.707661	House
+11	2	Cool One 	NY, Inferno St. 123	1000000	300	7	2	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	When-Buying-a-Bigger-House-Could-Be-a-Bad-Idea_1.jpg	2022-08-27 19:50:26.261962	2022-08-27 19:50:26.261962	House
+12	2	Super Modern One Perfect	Mars Station #2	10000000	1000	6	6	Praesent varius erat non est ullamcorper, a condimentum est eleifend. Cras elementum est ac nulla malesuada, in accumsan velit ullamcorper. Morbi mauris metus, egestas nec pellentesque vel, luctus sit amet risus. Proin faucibus ornare est vitae lacinia. Pellentesque mi dolor, porttitor fringilla rutrum vel, malesuada in augue. Proin at ullamcorper magna. Donec quis est facilisis neque semper mattis. Ut egestas condimentum magna sed sagittis. Ut vehicula ante quis lectus fermentum, non volutpat sapien lobortis. Aenean sed mattis magna, ac fringilla eros. Donec congue felis nec nisi varius feugiat. Curabitur quis justo venenatis, faucibus ex nec, scelerisque metus. Morbi ut tellus sit amet nisl dictum porta quis ac mi. Curabitur eget ullamcorper urna, quis dignissim lacus.	7D2_6611.jpg	2022-08-27 19:51:39.947755	2022-08-27 19:51:39.947755	House
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20220817144048
+20220817144528
+20220818230738
+20220819001823
+20220823010911
+20220825221958
+\.
+
+
+--
+-- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.accounts_id_seq', 2, true);
+
+
+--
+-- Name: action_text_rich_texts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.action_text_rich_texts_id_seq', 1, false);
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 1, false);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 1, false);
+
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.active_storage_variant_records_id_seq', 1, false);
+
+
+--
+-- Name: properties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.properties_id_seq', 12, true);
+
+
+--
+-- Name: accounts accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.accounts
+    ADD CONSTRAINT accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: action_text_rich_texts action_text_rich_texts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.action_text_rich_texts
+    ADD CONSTRAINT action_text_rich_texts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_variant_records active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT active_storage_variant_records_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: properties properties_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.properties
+    ADD CONSTRAINT properties_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: index_accounts_on_confirmation_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_accounts_on_confirmation_token ON public.accounts USING btree (confirmation_token);
+
+
+--
+-- Name: index_accounts_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_accounts_on_email ON public.accounts USING btree (email);
+
+
+--
+-- Name: index_accounts_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_accounts_on_reset_password_token ON public.accounts USING btree (reset_password_token);
+
+
+--
+-- Name: index_action_text_rich_texts_uniqueness; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_action_text_rich_texts_uniqueness ON public.action_text_rich_texts USING btree (record_type, record_id, name);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_active_storage_variant_records_uniqueness; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.active_storage_variant_records USING btree (blob_id, variation_digest);
+
+
+--
+-- Name: index_properties_on_account_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_properties_on_account_id ON public.properties USING btree (account_id);
+
+
+--
+-- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT fk_rails_993965df05 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
