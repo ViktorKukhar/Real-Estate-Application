@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_account!, only: [:new,:create,:destroy]
-  before_action :set_sidebar, except: [:show, :apartments, :houses]
+  before_action :set_sidebar, except: [:show, :apartments, :houses, :one_rooms, :two_rooms, :three_rooms, :four_rooms]
   # GET /properties or /properties.json
   def index
     @properties = Property.all
@@ -27,6 +27,24 @@ class PropertiesController < ApplicationController
   def apartments
     @properties = Property.where(kind: 'Apartment')
   end
+
+  def one_rooms
+    @properties = Property.where(kind: 'Apartment', rooms: "1")
+  end
+
+  def two_rooms
+    @properties = Property.where(kind: 'Apartment', rooms: "2")
+  end
+
+  def three_rooms
+    @properties = Property.where(kind: 'Apartment', rooms: "3")
+  end
+
+  def four_rooms
+    @properties = Property.where(kind: 'Apartment', rooms: "4")
+  end
+
+
 
   def houses
     @properties = Property.where(kind: 'House')

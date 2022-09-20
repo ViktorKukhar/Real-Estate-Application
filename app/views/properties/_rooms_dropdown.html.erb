@@ -1,0 +1,28 @@
+<div class="dropstart">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Rooms:
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li>
+      <%= link_to one_rooms_path, class:"text-decoration-none" do %>
+      <span class="dropdown-item <%= 'active' if current_page?(one_rooms_path) %>">1-rooms</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to two_rooms_path, class:"text-decoration-none" do %>
+      <span class="dropdown-item <%= 'active' if current_page?(two_rooms_path) %>">2-rooms</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to three_rooms_path, class:"text-decoration-none" do %>
+      <span class="dropdown-item <%= 'active' if current_page?(three_rooms_path) %>">3-rooms</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to four_rooms_path, class:"text-decoration-none" do %>
+      <span class="dropdown-item <%= 'active' if current_page?(four_rooms_path) %>">4-rooms</span>
+      <% end %>
+    </li>
+    <li><a class="dropdown-item" href="#">5 and more room</a></li>
+  </ul>
+</div>
