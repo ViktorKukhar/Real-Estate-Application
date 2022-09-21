@@ -8,8 +8,8 @@
     <div class="carousel-item active">
      <div class="carousel-image-place ">
 
-       <% if property.image.present? %>
-        <%= image_tag property.image.url, class: "image-carousel" %>
+       <% if property.images.present? %>
+        <%= image_tag property.images[0], class: "image-carousel" %>
        <% else %>
         <%= image_tag "placeholder.jpg" %>
        <% end %>
@@ -26,8 +26,8 @@
     <div class="carousel-item">
       <div class="carousel-image-place">
 
-        <% if property.image.present? %>
-         <%= image_tag property.image.url, class: "image-carousel" %>
+        <% if property.images.present? %>
+         <%= image_tag property.images[1], class: "image-carousel" %>
         <% else %>
          <%= image_tag "placeholder.jpg" %>
         <% end %>
@@ -42,8 +42,8 @@
     </div>
     <div class="carousel-item">
       <div class="carousel-image-place">
-         <% if property.image.present? %>
-          <%= image_tag property.image.url, class: "image-carousel" %>
+         <% if property.images.present? %>
+          <%= image_tag property.images[2], class: "image-carousel" %>
          <% else %>
           <%= image_tag "placeholder.jpg" %>
          <% end %>

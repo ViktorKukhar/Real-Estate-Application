@@ -6,8 +6,8 @@
   <div class="card shadow-sm">
 
 
-      <% if property.image.present? %>
-      <%= image_tag property.image.url, class:"card-img-top"%>
+      <% if property.images.present? %>
+      <%= image_tag property.images[0], class:"card-img-top"%>
       <% else %>
       <%= image_tag "placeholder.jpg" %>
       <% end %>

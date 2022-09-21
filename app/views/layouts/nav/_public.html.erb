@@ -5,13 +5,19 @@
         <li class="nav-item"><a href="/" class="nav-link <%= 'active' if current_page?(root_path) %>" aria-current="page">Home</a></li>
 
         <% if account_signed_in? %>
-
+          <% if current_account.admin? %>
+          <li class="nav-item">
+            <%= link_to admin_panel_path, class: "text-decoration-none text-body" do %>
+            <span class="nav-link <%= 'active' if current_page?(admin_panel_path) %>">Admin Panel</span>
+            <% end %>
+          </li>
+          <% else %>
         <li class="nav-item">
           <%= link_to properties_path, class: "text-decoration-none text-body" do %>
           <span class="nav-link <%= 'active' if current_page?(properties_path) %>">My Properties</span>
           <% end %>
         </li>
-
+        <% end %>
         <% end %>
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
