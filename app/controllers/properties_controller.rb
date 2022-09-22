@@ -28,6 +28,14 @@ class PropertiesController < ApplicationController
     @properties = Property.where(kind: 'Apartment')
   end
 
+  def apartments_sell
+    @properties = Property.where(kind: 'Apartment', offer: "Sell")
+  end
+
+  def apartments_rent
+    @properties = Property.where(kind: 'Apartment', offer: "Rent")
+  end
+
   def one_rooms
     @properties = Property.where(kind: 'Apartment', rooms: "1")
   end
@@ -49,6 +57,14 @@ class PropertiesController < ApplicationController
   def houses
     @properties = Property.where(kind: 'House')
   end
+  def houses_sell
+    @properties = Property.where(kind: 'House', offer: "Sell")
+  end
+  def houses_rent
+    @properties = Property.where(kind: 'House', offer: "Rent")
+  end
+
+
 
   # POST /properties or /properties.json
   def create
@@ -103,6 +119,6 @@ class PropertiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.require(:property).permit(:name, :address, :price, :area, :rooms, :bathrooms, :description, :image, :kind, images: [])
+      params.require(:property).permit(:name, :address, :price, :area, :rooms, :bathrooms, :description, :image, :kind, :offer, images: [])
     end
 end

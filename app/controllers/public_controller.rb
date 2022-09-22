@@ -7,7 +7,13 @@ class PublicController < ApplicationController
     @properties = Property.latest
 
   end
-  def pass
 
+  def sell
+    @properties = Property.latest.where(offer: 'Sell')
   end
+
+  def rent
+    @properties = Property.latest.where(offer: 'Rent')
+  end
+
 end

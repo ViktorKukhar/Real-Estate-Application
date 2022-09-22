@@ -1,0 +1,34 @@
+<div class="container px-4 py-5" id="custom-cards">
+    <h2 class="pb-2 border-bottom">Are you looking for:</h2>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 pt-5 pb-4 justify-content-center">
+
+      <%= link_to apartments_sell_path, class: "text-decoration-none text-body" do %>
+      <div class="col prop-type-col">
+        <div class=" prop-img card h-100 text-white rounded-5 shadow-lg" style="background-image: url(<%= asset_path 'aparts.jpg' %>);">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Apartments</h2>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <%= link_to houses_sell_path, class: "text-decoration-none text-body" do %>
+      <div class="col">
+        <div class=" prop-img card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('<%= asset_path 'house.jpg' %>');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Houses</h2>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>

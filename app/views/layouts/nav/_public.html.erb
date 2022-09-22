@@ -19,14 +19,22 @@
         </li>
         <% end %>
         <% end %>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">
+          <%= link_to sell_path, class: "text-decoration-none text-body" do %>
+          <span class="nav-link <%= 'active' if current_page?(sell_path) %>">Selling</span>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to rent_path, class: "text-decoration-none text-body" do %>
+          <span class="nav-link <%= 'active me-2' if current_page?(rent_path) %>">Rent</span>
+          <% end %>
+        </li>
         <% if account_signed_in? %>
         <li class="nav-item">
           <%= button_to "Log out", destroy_account_session_path, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-outline-danger me-2" %>
         </li>
         <% else %>
+        <!-- <li class="nav-item"><span class="nav-link">Are you seller? Then: </span></li> -->
         <li class="nav-item">
           <%= link_to "Login", new_account_session_path, class: "btn btn-outline-primary me-2" %>
         </li>

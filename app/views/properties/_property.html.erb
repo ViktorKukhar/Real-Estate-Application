@@ -8,7 +8,7 @@
     <div class="carousel-item active">
      <div class="carousel-image-place ">
 
-       <% if property.images.present? %>
+       <% if property.images[0].present? %>
         <%= image_tag property.images[0], class: "image-carousel" %>
        <% else %>
         <%= image_tag "placeholder.jpg" %>
@@ -26,7 +26,7 @@
     <div class="carousel-item">
       <div class="carousel-image-place">
 
-        <% if property.images.present? %>
+        <% if property.images[1].present? %>
          <%= image_tag property.images[1], class: "image-carousel" %>
         <% else %>
          <%= image_tag "placeholder.jpg" %>
@@ -35,14 +35,18 @@
       <div class="container">
         <div class="carousel-caption text-end">
           <h1><%= property.name %></h1>
+          <% if @property.offer == "Sell" %>
           <p class="fs-4 fst-italic">Start from: <%= number_to_currency(property.price, precision: 0) %></p>
+          <% else %>
+          <p class="fs-4 fst-italic">Start from: <%= number_to_currency(property.price, precision: 0) %> / month</p>
+          <% end %>
           <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
         </div>
       </div>
     </div>
     <div class="carousel-item">
       <div class="carousel-image-place">
-         <% if property.images.present? %>
+         <% if property.images[2].present? %>
           <%= image_tag property.images[2], class: "image-carousel" %>
          <% else %>
           <%= image_tag "placeholder.jpg" %>
@@ -72,7 +76,11 @@
        <div class="row border-bottom">
          <div class="col-sm-7">
            <span class="fs-4"><%= property.address %></span>
+          <% if @property.offer == "Sell" %>
            <h4 class="fst-italic pt-2 pb-4">Start from: <span class="fs-3"><%= number_to_currency(property.price, precision: 0) %></span</h4>
+          <% else %>
+            <h4 class="fst-italic pt-2 pb-4">Start from: <span class="fs-3"><%= number_to_currency(property.price, precision: 0) %> / month</span</h4>
+          <% end %>
          </div>
          <div class="col-sm-4 text-center">
         <div class="row p-4">

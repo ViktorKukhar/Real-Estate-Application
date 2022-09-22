@@ -1,0 +1,11 @@
+<% @account.properties.each do |property| %>
+  <li>
+    <%= link_to property, class:"text-decoration-none" do %>
+    <div class="dropdown-item d-flex flex-row align-items-center">
+    <%= property.name %>
+    <%= link_to 'Edit', edit_property_path(property), class: "btn btn-outline-primary btn-sm mx-2" %>
+    <%= button_to 'Destroy', property, method: :delete,  form: {data: {turbo_confirm: 'Are you sure?'}}, class: "btn btn-outline-danger btn-sm"  %>
+    </div>
+    <% end %>
+  </li>
+  <% end %>
