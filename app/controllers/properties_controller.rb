@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [ :show, :edit, :update, :destroy ]
   before_action :authenticate_account!, only: [:new,:create,:destroy]
-  before_action :set_sidebar, except: [:show, :apartments, :houses, :one_rooms, :two_rooms, :three_rooms, :four_rooms]
+  before_action :set_sidebar, except: [:show, :apartments, :apartments_sell,:apartments_rent,:houses_sell,:houses_rent, :houses, :one_rooms, :two_rooms, :three_rooms, :four_rooms]
   # GET /properties or /properties.json
   def index
     @properties = Property.all
