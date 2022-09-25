@@ -28,47 +28,6 @@
     </div>
   <% end %>
 
-
-    <!-- <div class="carousel-item">
-      <div class="carousel-image-place">
-
-        <% if property.images[1].present? %>
-         <%= image_tag property.images[1], class: "image-carousel" %>
-        <% else %>
-         <%= image_tag "placeholder.jpg" %>
-        <% end %>
-       </div>
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1><%= property.name %></h1>
-          <% if @property.offer == "Sell" %>
-          <p class="fs-4 fst-italic">Start from: <%= number_to_currency(property.price, precision: 0) %></p>
-          <% else %>
-          <p class="fs-4 fst-italic">Start from: <%= number_to_currency(property.price, precision: 0) %> / month</p>
-          <% end %>
-          <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="carousel-image-place">
-         <% if property.images[2].present? %>
-          <%= image_tag property.images[2], class: "image-carousel" %>
-         <% else %>
-          <%= image_tag "placeholder.jpg" %>
-         <% end %>
-        </div>
-      <div class="container">
-        <div class="carousel-caption text-end">
-          <h1><%= property.name %></h1>
-          <p class="fs-4 fst-italic"><%= property.address %></p>
-          <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
-        </div>
-      </div>
-    </div> -->
-
-
-
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
