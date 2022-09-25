@@ -15,11 +15,8 @@
 
     <div class="card-body ">
       <h5 class="card-text"><%= property.address %></h5>
-      <% if property.offer == "Sell" %>
+
       <h6 class="card-text">Start from: <span class="fs-5"><%= number_to_currency(property.price, precision: 0)%></span></h6>
-      <% else %>
-      <h6 class="card-text">Start from: <span class="fs-5"><%= number_to_currency(property.price, precision: 0)%> / month</span></h6>
-      <% end %>
       <div class="row d-flex flex-row">
         <div class="col-1">
           <svg width="25" height="25" class="" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4.00002 19.00001v2M20.00002 19.00001v2M8 11h8a5 5 0 0 1 5 5v3H3v-3a5 5 0 0 1 5-5z"></path><path d="M6.5 11V9A1.5 1.5 0 0 1 8 7.5h2A1.5 1.5 0 0 1 11.5 9v1M12.5 10V9A1.5 1.5 0 0 1 14 7.5h2A1.5 1.5 0 0 1 17.5 9v2" fill="none" stroke="currentColor"></path><path d="M20 13V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" fill="none" stroke="currentColor" stroke-width="2"></path><path fill="none" stroke="currentColor" d="M3.5 15.5h17"></path></svg>

@@ -1,15 +1,18 @@
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
-  </div>
+
+
+    <% property.images.each_with_index do |image, n| %>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="<%= n %>" class="<%= "active " if n==0 %> aria-label="Slide 1" aria-current="true"></button>
+    <% end %>
+</div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <% property.images.each_with_index do |image, n| %>
+    <div class="carousel-item <%= "active " if n==0 %>">
      <div class="carousel-image-place ">
 
-       <% if property.images[0].present? %>
-        <%= image_tag property.images[0], class: "image-carousel" %>
+       <% if image.present? %>
+        <%= image_tag image, class: "image-carousel" %>
        <% else %>
         <%= image_tag "placeholder.jpg" %>
        <% end %>
@@ -23,7 +26,10 @@
         </div>
       </div>
     </div>
-    <div class="carousel-item">
+  <% end %>
+
+
+    <!-- <div class="carousel-item">
       <div class="carousel-image-place">
 
         <% if property.images[1].present? %>
@@ -59,7 +65,10 @@
           <p><a class="btn btn-lg btn-primary" href="#">More photo</a></p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -99,9 +108,12 @@
         </div>
         </div>
       </div>
+
+
       <div class="pt-4 prop-desc mb-5">
 
         <h3>Description</h3>
+
         <%= property.description%>
 
       </div>

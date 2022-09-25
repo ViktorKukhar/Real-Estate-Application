@@ -24,6 +24,8 @@ class PropertiesController < ApplicationController
   def edit
   end
 
+  # PROPERTY TYPES
+
   def apartments
     @properties = Property.where(kind: 'Apartment')
   end
